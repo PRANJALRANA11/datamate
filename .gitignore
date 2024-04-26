@@ -4,3 +4,5 @@ my_notebook.ipynb
 agent/__pycache__/
 data_gathering/__pycache__/
 Kernel/__pycache__/
+__pycache__/
+.venv/

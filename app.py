@@ -4,7 +4,23 @@ from Kernel.Kernel import Kernel
 from agent.refine_code import RefineCode
 from data_gathering.load_dataset import GithubSearch
 from agent.Data_visualize import DataVisualize
+from fastapi import FastAPI
 
+app = FastAPI()
+
+origins = [
+    # "http://localhost:3000",
+    # "http://localhost:3001",
+    "*"
+]
+
+
+
+@app.get("/load_datasets")
+async def root():
+    DataGathering = GithubSearch()
+    res = DataGathering.search_github("Apple stocks")
+    return {"datasets" : res}
 
 
 def main():
@@ -45,6 +61,9 @@ def main():
             else:
                 data.generate_gemini_response(prompt,output)
     
+
+
+
 
         
 if __name__ == "__main__":
