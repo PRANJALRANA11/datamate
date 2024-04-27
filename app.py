@@ -31,10 +31,20 @@ def main():
     res = DataGathering.search_github("Apple stocks")
     format_res = DataGathering.format_items(res)
     # Load the dataset
-    code, output = kernel.execute_code(f"import pandas as pd\ndf = pd.read_csv('{format_res[0]['fullurl']}')\ndf.head()")
+    code, output = kernel.execute_code(f"import pandas as pd\ndf = pd.read_csv('{format_res[0]['fullurl']}')\ndf.head()",0)
+    init_code = f"import pandas as pd\ndf = pd.read_csv('{format_res[0]['fullurl']}')\ndf.head()"
 
 
-     
+    prompt = input("enter the prompt")
+    codeAgent = CodeAgent()
+    code = codeAgent.generate_code(prompt,output,init_code)
+    refine_code = RefineCode(code)
+    code = refine_code.refine()
+    code, output = kernel.execute_code(code[1],1)
+    if output != 'image_path':
+        codeAgent.generate_code(prompt,output)
+    else:
+        data.generate_gemini_response(prompt,output)
     # Give the prompt to generate refine and execute the code
     for i in range(4):
         if output == "imageToSaved.png":

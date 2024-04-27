@@ -14,16 +14,17 @@ class Kernel:
         # Create a new notebook
         notebook = nbformat.v4.new_notebook()
         # Add a code cell with some code
+
         cell = nbformat.v4.new_code_cell(source=code)
         notebook.cells.append(cell)
-        # Save the notebook
         nbformat.write(notebook, 'my_notebook.ipynb')
+
         # Execute the notebook
         try:
             with open('my_notebook.ipynb') as f:
                 nb = nbformat.read(f, as_version=4)
             ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
-            ep.preprocess(nb, {'metadata': {'path': '.'}})
+            ep.preprocess(nb.cell[1], {'metadata': {'path': '.'}})
         except Exception as e:
             error_json = json.dumps({'message': str(e)})
             print("hello")
