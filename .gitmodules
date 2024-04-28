@@ -1,0 +1,3 @@
+[submodule "client-sub"]
+	path = client-sub
+	url = https://github.com/PRANJALRANA11/datamate-csr
