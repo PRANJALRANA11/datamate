@@ -1,9 +1,7 @@
 google.generativeai
 python-dotenv
-# pathlib
-# re
-# requests
 nbformat
 nbconvert
 IPython
 fastapi
+jupyter
