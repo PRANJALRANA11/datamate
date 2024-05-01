@@ -124,7 +124,8 @@ def main():
     
     res = searching_dataset("Apple stocks")
     code , output = adding_dataset(res[0]['fullurl'])
-    print(Conversation_agent("find the max of volume",code,output))
+    code , output , text = Conversation_agent("do univariant analysis between volume and high by plotting scatterplot",output,code)
+    print(Conversation_agent("could you tell me the corelation",output,code))
 
 
 
