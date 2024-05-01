@@ -20,7 +20,7 @@ def searching_dataset(dataset_name):
     
 def adding_dataset(selected_dataset_url):
         code, output = kernel.execute_code(f"import pandas as pd\ndf = pd.read_csv('{selected_dataset_url}')\ndf.head()")
-        init_code=f"import pandas as pd\ndf = pd.read_csv('{selected_dataset_url}')\ndf.head()"
+        init_code=f"import pandas as pd\ndf = pd.read_csv('{selected_dataset_url}')\ndf.head()\n"
         total_code = init_code
         return total_code,output
 
@@ -53,8 +53,9 @@ def Conversation_agent(prompt,output,init_code=None):
                             code = refine_code.refine()
                             if_error, output = kernel.execute_code(code[1])
                             if if_error == "Yes":
-                                return init_code, output, "Error in executing code please correct it and try again"
-
+                                if len(output) > 500:
+                                    output = output[:max_length] + '...'
+                                text ="Error in executing code please correct it and try again"
             if output != 'imageToSaved.png':
                 codeAgent.generate_code(prompt,output)
             else:
@@ -67,6 +68,7 @@ def Conversation_agent(prompt,output,init_code=None):
                 code = refine_code.refine()
                 init_code += code[1]
                 text = code[0]
+                print("text",text)
                 if_error, output = kernel.execute_code(init_code)
                 if if_error == "Yes":
                     print("Running Interpreter iteration 1")
@@ -87,7 +89,10 @@ def Conversation_agent(prompt,output,init_code=None):
                             code = refine_code.refine()
                             if_error, output = kernel.execute_code(code[1])
                             if if_error == "Yes":
-                                return init_code, output, "Error in executing code please correct it and try again"
+                                if len(output) > 500:
+                                    output = output[:max_length] + '...'
+                                text ="Error in executing code please correct it and try again"
+
 
                 if output != 'image_path':
                     codeAgent.generate_code(prompt,output)
