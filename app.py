@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI
 from conversations.conversation_handle import searching_dataset , adding_dataset , Conversation_agent
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
@@ -9,6 +9,14 @@ origins = [
     # "http://localhost:3001",
     "*"
 ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 
