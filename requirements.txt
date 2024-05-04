@@ -5,3 +5,8 @@ nbconvert
 IPython
 fastapi
 jupyter
+pandas
+matplotlib
+seaborn 
+scipy
+numpy 
