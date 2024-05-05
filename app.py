@@ -1,7 +1,8 @@
 
 from fastapi import FastAPI
 from conversations.conversation_handle import searching_dataset , adding_dataset , Conversation_agent
-
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 app = FastAPI()
 
 origins = [
@@ -17,14 +18,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+<<<<<<< HEAD
+=======
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+>>>>>>> f8724996263154351cbc8c16903b28aa0dbb8944
 
 app.mount("/static", StaticFiles(directory="."), name="static")
 @app.get("/search_datasets")
