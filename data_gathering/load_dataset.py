@@ -13,7 +13,7 @@ class GithubSearch:
         endpoint = "/search/code"
         params = {
             "q": f"{query}.csv in:path",
-            "per_page": 5,
+            "per_page": 15,
         }
         headers = {
             "Accept": "application/vnd.github.v3+json",
