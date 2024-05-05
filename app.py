@@ -18,10 +18,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-<<<<<<< HEAD
-=======
-
->>>>>>> f8724996263154351cbc8c16903b28aa0dbb8944
 
 app.mount("/static", StaticFiles(directory="."), name="static")
 @app.get("/search_datasets")
