@@ -21,9 +21,9 @@ app.add_middleware(
 
 
 @app.get("/search_datasets")
-async def search_data():
+async def search_data(dataset_name):
     try:
-        res =  searching_dataset("Apple stocks")
+        res =  searching_dataset(dataset_name)
         return {"datasets" : res}
     except Exception as e:
         return e
