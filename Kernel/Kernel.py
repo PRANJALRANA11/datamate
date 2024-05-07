@@ -22,10 +22,10 @@ class Kernel:
 
         # Execute the notebook
         # try:
-            with open('my_notebook.ipynb') as f:
+        with open('my_notebook.ipynb') as f:
                 nb = nbformat.read(f, as_version=4)
-            ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
-            ep.preprocess(nb)
+        ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
+        ep.preprocess(nb)
         # except Exception as e:
         #     error_json = {'message': str(e)}
         #     print("Error in executing code", error_json)
