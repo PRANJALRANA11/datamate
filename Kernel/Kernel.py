@@ -21,15 +21,15 @@ class Kernel:
         nbformat.write(notebook, 'my_notebook.ipynb')
 
         # Execute the notebook
-        # try:
-        with open('my_notebook.ipynb') as f:
+        try:
+            with open('my_notebook.ipynb') as f:
                 nb = nbformat.read(f, as_version=4)
-        ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
-        ep.preprocess(nb)
-        # except Exception as e:
-        #     error_json = {'message': str(e)}
-        #     print("Error in executing code", error_json)
-        #     return "Yes", error_json
+            ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
+            ep.preprocess(nb)
+        except Exception as e:
+            error_json = {'message': str(e)}
+            print("Error in executing code", error_json)
+            return "Yes", error_json
         output_data = {}
         for i in range(len(nb.cells[0].outputs)):
             if nb.cells[0].outputs[i].output_type == 'display_data':
