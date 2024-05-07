@@ -1,57 +1,92 @@
-<h1 align="center" id="title">DataMate</h1>
+# [dataMate](https://github.com/PRANJALRANA11/datamate) 💬📊
 
-<p align="center"><img src="https://socialify.git.ci/PRANJALRANA11/datamate/image?description=1&amp;descriptionEditable=&amp;font=Inter&amp;forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pulls=1&amp;stargazers=1&amp;theme=Dark" alt="project-image">
+
+
+DataMate is your  data assistant. A conversational interface for your data where you can load, clean, transform, and visualize without a single line of code.
+
+## Demo
 
 https://github.com/PRANJALRANA11/datamate/assets/129268721/29098247-4e6a-4d56-8f35-0f70eac88411
 
-</p>
 
-<p id="description">DataMate is your private data assistant. A conversational interface for your data where you can load clean transform and visualize without a single line of code. DataMate is open source and can be run entirely locally keeping your juicy data secrets fully private.</p>
+Note: Demo above is `Gemini-pro/vision`, which sends the conversation to Google AI API. . Model can hallucinates answer or even can produce bugs
 
-<h2>🛠️ Installation Steps:</h2>
 
-<p>1. Clone the repository</p>
 
-```
+### ⇒ *[Try it now! Hosted public environment is live! (Click Here)](pranjalrana11.github.io/datamate-csr/)* ⇐
+
+
+
+
+## Features
+- [x] Persistent Juptyer kernel backend for data manipulation during conversation
+- [x] Natural language chat, visualizations/plots, and direct download of data assets
+- [x] Load multiple tables directly into the chat
+- [x] Search for data and load CSVs directly from github
+- [x] Export data as html file
+- [ ] WIP: Rollback kernel state when undo ~using `criu`~ (re-execute all cells)
+- [ ] TODO: Support for more data sources (e.g. SQL, S3, PySpark etc.)
+
+
+## Things you can ask DataMate
+- [x] Load data from a URL
+- [x] Clean data by removing duplicates, nulls, outliers, etc.
+- [x] Join data from multiple tables into a single output table
+- [x] Visualize data with plots and charts
+- [x] Ask whatever you want to your very own  code-interpreter
+
+## Quickstart
+
+To install locally.
+
+### 1. Clone the repository
+```bash
 git clone https://github.com/PRANJALRANA11/datamate
 ```
-
-<p>2. Create a branch</p>
-
-```
+###  2. Create a branch
+```bash
 git checkout -b temp
 ```
-
-<p>3. copy the .env.example to .env</p>
-
-```
+### 3. copy the .env.example to .env
+```bash
 cp .env.example .env
 ```
-
-<p>4. install the dependancies</p>
-
-```
+### 4. install the dependancies
+```bash
 pip install -r requirements.txt
 ```
+### 5. activate the virtual environment
+```bash
+.venv/scripts/activate
+```
+### 6. Run Uvicorn and access localhost:8000/docs
+```bash
+Uvicorn app:app --reload
+```
 
-<p>5. Add your changes</p>
 
-<p>6. Commit them</p>
 
-<h2>🍰 Contribution Guidelines:</h2>
 
-Welcome to datamate! We're excited to have you on board. Before you contribute please take a moment to review the following guidelines to help us maintain a smooth and collaborative environment.
 
-  
-  
-<h2>💻 Built with</h2>
 
-Technologies used in the project:
+## Contributions
 
-*   python
-*   gradio
-*   llm
+Contributions are welcome! Feel free to submit a PR or open an issue.
 
-<h2>🛡️ License:</h2>
+
+
+
+### Technologies used in the project:
+
+  fastapi
+  Jupyter Kernels
+  Google Cloud
+  Gemini pro
+
+### 🛡️ License
 
 This project is licensed under the MIT
+
+
+
+
